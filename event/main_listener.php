@@ -65,11 +65,11 @@ class main_listener implements EventSubscriberInterface
 			&amp;                       # start with "&"
 				(                       # then, any of the following:
 					[a-z0-9]+           # - one or more alphanumeric characters
-					| \#[0-9]{1,6}      # - "#" then 1-6 decimal digits
-					| \#x[0-9a-f]{1,6}  # - "#x" then 1-6 hex digits
+					| \#[0-9]{1,6}      # - or "#" then 1-6 decimal digits
+					| \#x[0-9a-f]{1,6}  # - or "#x" then 1-6 hex digits
 				)
 			;                           # end with ";"
-			~ix                         # case insensitive
+			~ix
 		REGEX;
 
 		return preg_replace(
