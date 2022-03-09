@@ -1,0 +1,7 @@
+services:
+    luoning.htmlentities.listener:
+        class: luoning\htmlentities\event\main_listener
+        arguments:
+            - '@language'
+        tags:
+            - { name: event.listener }
