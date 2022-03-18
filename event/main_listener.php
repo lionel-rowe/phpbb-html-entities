@@ -56,7 +56,7 @@ class main_listener implements EventSubscriberInterface
 	{
 		$entity = <<<REGEX
 			~
-			&amp;                       # start with "&"
+			&amp;                       # start with encoded "&"
 				(                       # then, any of the following:
 					[a-z0-9]+           # - one or more alphanumeric characters
 					| \#[0-9]{1,6}      # - or "#" then 1-6 decimal digits
@@ -66,6 +66,7 @@ class main_listener implements EventSubscriberInterface
 			~ix
 		REGEX;
 
+		// replace encoded "&amp;" with unecoded "&" in HTML
 		return preg_replace(
 			$entity,
 			'&$1;',
@@ -99,6 +100,7 @@ class main_listener implements EventSubscriberInterface
 			PREG_SPLIT_DELIM_CAPTURE,
 		);
 
+		// map with indexes
 		$segments = array_map(
 			[$this, 'render_segment'],
 			$segments,

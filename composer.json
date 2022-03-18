@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Render HTML entities in post text content",
 	"homepage": "https://github.com/lionel-rowe/phpbb-html-entities",
-	"version": "0.1.0-alpha",
+	"version": "1.0.0",
 	"time": "2022-03-09",
 	"license": "GPL-2.0-only",
 	"authors": [
@@ -13,13 +13,13 @@
 		}
 	],
 	"require": {
-		"php": ">=5.4",
+		"php": ">=7.3",
 		"composer/installers": "~1.0"
 	},
 	"extra": {
 		"display-name": "HTML Entities",
 		"soft-require": {
-			"phpbb/phpbb": ">=3.2.0,<4.0.0@dev"
+			"phpbb/phpbb": ">=3.3.0,<4.0.0@dev"
 		}
 	}
 }
