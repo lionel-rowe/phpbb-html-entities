@@ -54,8 +54,7 @@ class main_listener implements EventSubscriberInterface
 	 */
 	protected function replace_html_entities(string $str)
 	{
-		$entity = <<<REGEX
-			~
+		$entity = '/
 			&amp;                       # start with encoded "&"
 				(                       # then, any of the following:
 					[a-z0-9]+           # - one or more alphanumeric characters
@@ -63,14 +62,13 @@ class main_listener implements EventSubscriberInterface
 					| \#x[0-9a-f]{1,6}  # - or "#x" then 1-6 hex digits
 				)
 			;                           # end with ";"
-			~ix
-		REGEX;
+		/ix';
 
 		// replace encoded "&amp;" with unecoded "&" in HTML
 		return preg_replace(
 			$entity,
 			'&$1;',
-			$str,
+			$str
 		);
 	}
 
@@ -97,14 +95,14 @@ class main_listener implements EventSubscriberInterface
 			'/(<code[^>]*>[\s\S]+?<\/code>|<[^>]+>)/',
 			$event['html'],
 			-1,
-			PREG_SPLIT_DELIM_CAPTURE,
+			PREG_SPLIT_DELIM_CAPTURE
 		);
 
 		// map with indexes
 		$segments = array_map(
 			[$this, 'render_segment'],
 			$segments,
-			array_keys($segments),
+			array_keys($segments)
 		);
 
 		$event['html'] = implode('', $segments);
