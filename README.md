@@ -1,4 +1,6 @@
-# HTML Entities
+# [Deprecated] HTML Entities
+
+Note: This extension is now deprecated in favor of [TextFormatter](https://www.phpbb.com/community/viewtopic.php?f=456&t=2523206).
 
 ## Installation
 
